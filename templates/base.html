@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Tech Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body style="background-color: black; color: green;">
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/pages/">Blogs</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/accounts/profile/">Profile</a></li>
+                    <li><a href="/accounts/logout/">Logout</a></li>
+                {% else %}
+                    <li><a href="/accounts/login/">Login</a></li>
+                    <li><a href="/accounts/signup/">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>© 2024 Tech Blog | Made with Django</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<form method="GET">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+{% if blogs %}
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+                <p>{{ blog.subtitle }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay blogs disponibles.</p>
+{% endif %}
